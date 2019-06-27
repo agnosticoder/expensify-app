@@ -30,10 +30,10 @@ const store = configureStore();
 // });
 
 
-//=====================================================================================Action dispatches
-store.dispatch(addExpense({description: 'Water Bill', amount: 5906, note: 'This is very good note', createdAt: 3}));
-store.dispatch(addExpense({description: 'Gas Bill', note: 'yo buddy notes guy', amount: 947, createdAt: 1}));
-store.dispatch(addExpense({description: 'Rent', note: 'This is new expense', amount: 9407, createdAt: 2}));
+// //=====================================================================================Action dispatches
+// store.dispatch(addExpense({description: 'Water Bill', amount: 5906, note: 'This is very good note', createdAt: 3}));
+// store.dispatch(addExpense({description: 'Gas Bill', note: 'yo buddy notes guy', amount: 947, createdAt: 1}));
+// store.dispatch(addExpense({description: 'Rent', note: 'This is new expense', amount: 9407, createdAt: 2}));
 
 
 
