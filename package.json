@@ -6,8 +6,10 @@
   "scripts": {
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
-    "start": "webpack-dev-server --open",
-    "test": "jest --config=jest.config.json --watchAll"
+    "serve": "webpack-dev-server --open",
+    "test": "jest --config=jest.config.json --watchAll",
+    "start": "node server/server.js",
+    "postbuild": "npm run build:prod"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -32,6 +34,7 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "react": "^16.8.6",
