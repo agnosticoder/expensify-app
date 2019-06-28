@@ -9,7 +9,7 @@
     "serve": "webpack-dev-server --open",
     "test": "jest --config=jest.config.json --watchAll",
     "start": "node server/server.js",
-    "postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
