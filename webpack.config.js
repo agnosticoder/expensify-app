@@ -1,36 +1,53 @@
 var path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
-  mode: 'development',
-  entry: './src/app.js',
-  output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
+module.exports = (env) => {
+  const isProduction = env === 'production';
+
+  console.log('env', env);
+  return {
+    mode: isProduction ? 'production' : 'development',
+    entry: './src/app.js',
+    output: {
+      path: path.join(__dirname, 'public'),
+      filename: 'bundle.js'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader"
+          }
+        },
+        {
+          test: /\.s?css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {sourceMap: true},
+            },
+            {
+              loader: 'sass-loader',
+              options: {sourceMap: true},
+            },
+          ]
         }
-      },
-      {
-        test: /\.s?css$/,
-        use: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
-        ]
-      }
+      ]
+    },
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
+    devServer: {
+      contentBase: path.join(__dirname, 'public'),
+      host: '0.0.0.0',
+      port: 9000,
+      historyApiFallback: true
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'style.css',
+      })
     ]
-  },
-  devtool: 'cheap-module-eval-source-map',
-  devServer: {
-    contentBase: path.join(__dirname, 'public'),
-    host: '0.0.0.0',
-    port: 9000,
-    historyApiFallback: true
   }
 };
