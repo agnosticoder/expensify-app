@@ -8,19 +8,19 @@ import expenses from '../fixtures/expenses';
 //==========================
 
 test('should render AddExpensePage correctly', () => {
-    const addExpenseSpy = jest.fn();
+    const startAddExpenseSpy = jest.fn();
     const historySpy = { push: jest.fn()};
-    const wrapper = shallow(<AddExpensePage addExpense={addExpenseSpy} history={historySpy}/>);
+    const wrapper = shallow(<AddExpensePage startAddExpense={startAddExpenseSpy} history={historySpy}/>);
 
     expect(wrapper).toMatchSnapshot();
 
 });
 test('should handle onSubmit', () => {
-    const addExpenseSpy = jest.fn();
+    const startAddExpenseSpy = jest.fn();
     const historySpy = { push: jest.fn()};
-    const wrapper = shallow(<AddExpensePage addExpense={addExpenseSpy} history={historySpy}/>);
+    const wrapper = shallow(<AddExpensePage startAddExpense={startAddExpenseSpy} history={historySpy}/>);
 
     wrapper.find('ExpenseForm').prop('onSubmit')(expenses[1]);
-    expect(addExpenseSpy).toHaveBeenCalledWith(expenses[1]);
+    expect(startAddExpenseSpy).toHaveBeenCalledWith(expenses[1]);
     expect(historySpy.push).toHaveBeenCalledWith('/');
 });

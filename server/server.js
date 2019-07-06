@@ -4,8 +4,10 @@ const app = express();
 const publicPath = path.join(__dirname, '../public');
 const port =  process.env.PORT || 3000;
 
+//Serve up the public path
 app.use(express.static(publicPath));
 
+//Help to work react router
 app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 })
