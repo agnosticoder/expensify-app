@@ -50,3 +50,26 @@ const editExpense = (id, updates) => {
 };
 
 export { addExpense, removeExpense, editExpense};
+
+//SET_EXPENSES
+export const setExpenses = (expenses) => {
+    return {
+        type: 'SET_EXPENSES',
+        expenses
+    }
+};
+
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        return database.ref('expenses').once('value').then((expensesFirebase) => {
+            const expensesStore = [];
+            expensesFirebase.forEach((expense) => {
+                expensesStore.push({
+                    id: expense.key,
+                    ...expense.val()
+                });
+            });
+            dispatch(setExpenses(expensesStore));   
+        });
+    };
+};
