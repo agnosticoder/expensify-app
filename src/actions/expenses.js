@@ -13,7 +13,8 @@ const addExpense = (expense) => {
 //To add the redux-thunk functionality - this return the function as oppose to object
 //Start Add Expenses
 export const startAddExpense = (expenseData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         const {
             description = '',
             note = '',
@@ -23,7 +24,7 @@ export const startAddExpense = (expenseData = {}) => {
 
         const expense = { description, note, amount, createdAt};
 
-        return database.ref('expenses').push(expense).then((ref) => {
+        return database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
             dispatch(addExpense({
                 id: ref.key,
                 ...expense
@@ -44,9 +45,10 @@ const removeExpense = (id) => {
 
 //Start Remove Epense
 export const startRemoveExpense = (ids = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         const {id = ''} = ids;
-        return database.ref(`expenses/${id}`).remove().then(() => {
+        return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
             dispatch(removeExpense(id));
         });
     }
@@ -62,8 +64,9 @@ const editExpense = (id, updates) => {
 };
 
 export const startEditExpense = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`expenses/${id}`).update({
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses/${id}`).update({
             ...updates
         }).then(() => {
             dispatch(editExpense(id, updates));
@@ -83,8 +86,9 @@ export const setExpenses = (expenses) => {
 
 //Start Set Expenses
 export const startSetExpenses = () => {
-    return (dispatch) => {
-        return database.ref('expenses').once('value').then((expensesFirebase) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses`).once('value').then((expensesFirebase) => {
             const expensesStore = [];
             expensesFirebase.forEach((expense) => {
                 expensesStore.push({
