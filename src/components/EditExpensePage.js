@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import { editExpense, startRemoveExpense } from '../actions/expenses';
+import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
 
 
@@ -11,7 +11,7 @@ export const EditExpensePage = (props) => {
             Wana do some change with id {props.match.params.id}
             <ExpenseForm expense={props.expense}
                 onSubmit={(expense) => {
-                    props.editExpense(props.expense.id, expense);
+                    props.startEditExpense(props.expense.id, expense);
                     props.history.push('/');
                 }}
             />
@@ -35,7 +35,7 @@ const getState = (state,props) => {
 
 const matchDispatchToProp = (dispatch) => {
     return {
-        editExpense: (id,expense) => dispatch(editExpense(id, expense)),
+        startEditExpense: (id,expense) => dispatch(startEditExpense(id, expense)),
         startRemoveExpense: (data) => dispatch(startRemoveExpense(data))
     }
 };

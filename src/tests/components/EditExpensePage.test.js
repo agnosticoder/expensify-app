@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { EditExpensePage } from '../../components/EditExpensePage';
 import expenses from '../fixtures/expenses';
-import { wrap } from 'module';
 
 test('should render EditExpensePage correctly', () => {
     const matchSpy = { params : {
@@ -20,7 +19,7 @@ test('should handle editExpense', () => {
         id: 'oh god'
     };
 
-    const editExpenseSpy = jest.fn();
+    const startEditExpenseSpy = jest.fn();
 
     const historySpy = { push: jest.fn()};
 
@@ -28,11 +27,11 @@ test('should handle editExpense', () => {
     <EditExpensePage 
     match={matchSpy} 
     expense={expenseSpy} 
-    editExpense={editExpenseSpy} 
+    startEditExpense={startEditExpenseSpy} 
     history={historySpy} />);
 
     wrapper.find("ExpenseForm").prop('onSubmit')(expenses[1]);
-    expect(editExpenseSpy).toHaveBeenCalledWith('oh god', expenses[1]);
+    expect(startEditExpenseSpy).toHaveBeenCalledWith('oh god', expenses[1]);
     expect(historySpy.push).toHaveBeenCalledWith('/');
 });
 
