@@ -45,7 +45,7 @@ test('should handle removeExpense', () => {
         id: 'oh god'
     };
 
-    const removeExpenseSpy = jest.fn();
+    const startRemoveExpenseSpy = jest.fn();
 
     const historySpy = { push: jest.fn()};
 
@@ -53,10 +53,10 @@ test('should handle removeExpense', () => {
     <EditExpensePage 
     match={matchSpy} 
     expense={expenseSpy} 
-    removeExpense={removeExpenseSpy}
+    startRemoveExpense={startRemoveExpenseSpy}
     history={historySpy} />);
 
     wrapper.find('button').simulate('click');
-    expect(removeExpenseSpy).toHaveBeenCalledWith({id: 'oh god'});
+    expect(startRemoveExpenseSpy).toHaveBeenCalledWith({id: 'oh god'});
     expect(historySpy.push).toHaveBeenCalledWith('/');
 });

@@ -11,6 +11,7 @@ const addExpense = (expense) => {
 };
 
 //To add the redux-thunk functionality - this return the function as oppose to object
+//Start Add Expenses
 export const startAddExpense = (expenseData = {}) => {
     return (dispatch) => {
         const {
@@ -32,7 +33,7 @@ export const startAddExpense = (expenseData = {}) => {
 };
 
 //==============================REMOVE_EXPENSE
-const removeExpense = ({id = ''} = {}) => {
+const removeExpense = (id) => {
     return{
         type: 'REMOVE_EXPENSE',
         expense: {
@@ -40,6 +41,17 @@ const removeExpense = ({id = ''} = {}) => {
         } 
     }
 };
+
+//Start Remove Epense
+export const startRemoveExpense = (ids = {}) => {
+    return (dispatch) => {
+        const {id = ''} = ids;
+        return database.ref(`expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense(id));
+        });
+    }
+}
+
 //==============================EDIT_EXPENSE
 const editExpense = (id, updates) => {
     return{
@@ -59,6 +71,7 @@ export const setExpenses = (expenses) => {
     }
 };
 
+//Start Set Expenses
 export const startSetExpenses = () => {
     return (dispatch) => {
         return database.ref('expenses').once('value').then((expensesFirebase) => {
