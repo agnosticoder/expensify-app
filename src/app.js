@@ -5,18 +5,19 @@ import ReactDOM from 'react-dom';
 //"connect" function with every comp. that need to connect to the store
 import { Provider, connect} from 'react-redux'
 //this is stuff of react-router library
-import AppRouter from './routers/AppRouter';
+import AppRouter, {history} from './routers/AppRouter';
 //Stuff only related to redux and that we can do in isolation
 import configureStore from './store/configureStore';
 import { addExpense, startSetExpenses } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
+import { login, logout} from './actions/auth';
 import getVisibleExpenses from './selectors/expenses';
 //Styles
 import 'normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 //firebase
-import './firebase/firebase';
+import {firebase} from  './firebase/firebase';
 
 
 //=====================================================================================Store Creation
@@ -47,10 +48,37 @@ const jsx = (
     </Provider>
 );
 
+//To fixed rerender of app again and again with login and logout
+let hasRendered = false;
+const renderApp = () => {
+    if(!hasRendered){
+        ReactDOM.render(jsx , document.getElementById('app'));
+        hasRendered = true;
+    }
+};
+
+
+
 //Set Loading message to the screen until we get the data from firebase
 ReactDOM.render(<p>Loading...</p> , document.getElementById('app'));
 
-store.dispatch(startSetExpenses()).then(() => {
-    ReactDOM.render(jsx , document.getElementById('app'));
+
+
+firebase.auth().onAuthStateChanged((user) => {
+    if(user){
+        console.log('uid', user.uid);
+        store.dispatch(login(user.uid));
+        store.dispatch(startSetExpenses()).then(() => {
+            renderApp();
+            if(history.location.pathname === '/') {
+                history.push('/dashboard');
+            }
+        });
+    }else{
+        store.dispatch(logout());
+        renderApp();
+        history.push('/');
+        console.log('logout');
+    }
 });
 
