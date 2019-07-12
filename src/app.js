@@ -18,6 +18,7 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 //firebase
 import {firebase} from  './firebase/firebase';
+import LoadingPage from './components/LoadingPage';
 
 
 //=====================================================================================Store Creation
@@ -60,7 +61,7 @@ const renderApp = () => {
 
 
 //Set Loading message to the screen until we get the data from firebase
-ReactDOM.render(<p>Loading...</p> , document.getElementById('app'));
+ReactDOM.render(<LoadingPage /> , document.getElementById('app'));
 
 
 

@@ -3,10 +3,12 @@
 exports[`should not set amount if invalid input 1`] = `
 <div>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -14,6 +16,7 @@ exports[`should not set amount if invalid input 1`] = `
     />
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -109,13 +112,18 @@ exports[`should not set amount if invalid input 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense(optional)"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
@@ -123,10 +131,12 @@ exports[`should not set amount if invalid input 1`] = `
 exports[`should render ExpenseForm correctly 1`] = `
 <div>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -134,6 +144,7 @@ exports[`should render ExpenseForm correctly 1`] = `
     />
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -229,13 +240,18 @@ exports[`should render ExpenseForm correctly 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense(optional)"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
@@ -243,10 +259,12 @@ exports[`should render ExpenseForm correctly 1`] = `
 exports[`should render ExpenseForm with expense data 1`] = `
 <div>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -254,6 +272,7 @@ exports[`should render ExpenseForm with expense data 1`] = `
     />
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -349,27 +368,36 @@ exports[`should render ExpenseForm with expense data 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense(optional)"
       value="This is agnostic note"
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
 
 exports[`should render error for invalid form submission 1`] = `
 <div>
-  <p>
-    Please provide description and amount
-  </p>
   <form
+    className="form"
     onSubmit={[Function]}
   >
+    <p
+      className="form__error"
+    >
+      Please provide description and amount
+    </p>
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -377,6 +405,7 @@ exports[`should render error for invalid form submission 1`] = `
     />
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -472,13 +501,18 @@ exports[`should render error for invalid form submission 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense(optional)"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
@@ -486,10 +520,12 @@ exports[`should render error for invalid form submission 1`] = `
 exports[`should set amount if valid input 1`] = `
 <div>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -497,6 +533,7 @@ exports[`should set amount if valid input 1`] = `
     />
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -592,13 +629,18 @@ exports[`should set amount if valid input 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense(optional)"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
@@ -606,10 +648,12 @@ exports[`should set amount if valid input 1`] = `
 exports[`should set description on input change 1`] = `
 <div>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -617,6 +661,7 @@ exports[`should set description on input change 1`] = `
     />
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -712,13 +757,18 @@ exports[`should set description on input change 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense(optional)"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
@@ -726,10 +776,12 @@ exports[`should set description on input change 1`] = `
 exports[`should set note on textarea change 1`] = `
 <div>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
@@ -737,6 +789,7 @@ exports[`should set note on textarea change 1`] = `
     />
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -832,13 +885,18 @@ exports[`should set note on textarea change 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense(optional)"
       value="This is a fantastic note for the fantastic expense"
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
